@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="header__logo">
+    <img src="assets/logo.svg" alt="Logo" />
+  </div>
+  <nav class="header__navbar" [ngClass]="menuIsOpen ? 'opened' : ''">
+    <div class="header__navbar-logo">
+      <img src="assets/logo.svg" alt="Logo" />
+    </div>
+    <ul>
+      <li>Home</li>
+      <li>Pokedéx</li>
+      <li>Legendaries</li>
+      <li>Documentation</li>
+    </ul>
+  </nav>
+  <button class="header__btn-menu" (click)="openMenu()">
+    <img src="assets/burguer-icon.svg" alt="burguer-icon" />
+  </button>
+</header>
