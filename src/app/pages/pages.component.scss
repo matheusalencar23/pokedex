@@ -1,5 +1,23 @@
 .page {
   &__content {
     padding-top: 72px;
+
+    &::after {
+      content: "";
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: calc(100vh - 72px);
+      background-color: transparent;
+      transition: bottom 0s 0.5s, background-color 0.5s;
+    }
+
+    &.blocked::after {
+      top: 72px;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: background-color 0.5s;
+    }
   }
 }
