@@ -44,6 +44,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: auto;
 
       li {
         font-weight: 400;
@@ -51,6 +52,7 @@
         line-height: 32px;
         text-shadow: 4px 4px 20px rgba(1, 28, 64, 0.2);
         margin-bottom: 18px;
+        margin-right: 0;
         cursor: pointer;
 
         a {
@@ -63,6 +65,39 @@
     &.opened {
       top: 0;
     }
+
+    @media screen and (min-width: 768px) {
+      position: relative;
+      background: transparent;
+      top: 0;
+      height: 100%;
+      padding-top: 0;
+
+      &-logo {
+        display: none;
+      }
+
+      ul {
+        flex-direction: row;
+        height: 100%;
+
+        li {
+          font-size: 19px;
+          line-height: 22px;
+          margin-bottom: 0;
+          margin-right: 24px;
+        }
+      }
+    }
+
+    @media screen and (min-width: 1440px) {
+      ul {
+        li {
+          font-size: 25px;
+          line-height: 29px;
+        }
+      }
+    }
   }
 
   &__btn-menu {
@@ -70,5 +105,10 @@
     border: none;
     outline: none;
     cursor: pointer;
+    display: block;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
   }
 }
