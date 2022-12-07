@@ -1,5 +1,13 @@
-<app-header></app-header>
-<div class="page__content" [ngClass]="contentPageIsBlocked() ? 'blocked' : ''">
+<app-header
+  [menuIsOpen]="menuIsOpen"
+  (openMenuEvent)="openMenu()"
+  (navigateToEvent)="navigateTo($event)"
+></app-header>
+<div
+  class="page__content"
+  [ngClass]="contentPageIsBlocked() ? 'blocked' : ''"
+  (click)="clickPage()"
+>
   <p>Content</p>
   <p>Content</p>
   <p>Content</p>

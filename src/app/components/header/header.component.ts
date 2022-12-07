@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { GeneralService } from 'src/app/service/general.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,19 +6,20 @@ import { GeneralService } from 'src/app/service/general.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  menuIsOpen: boolean = false;
+  @Input() menuIsOpen: boolean = false;
 
-  constructor(private _generalService: GeneralService) {}
+  @Output() openMenuEvent = new EventEmitter<void>();
+  @Output() navigateToEvent = new EventEmitter<string>();
+
+  constructor() {}
 
   ngOnInit(): void {}
 
   openMenu(): void {
-    this.menuIsOpen = true;
-    this._generalService.blockContentPage();
+    this.openMenuEvent.emit();
   }
 
-  redirectTo(route: string) {
-    this.menuIsOpen = false;
-    this._generalService.unblockContentPage();
+  navigateTo(route: string) {
+    this.navigateToEvent.emit(route);
   }
 }
