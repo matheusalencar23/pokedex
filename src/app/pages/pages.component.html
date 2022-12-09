@@ -3,23 +3,10 @@
   (openMenuEvent)="openMenu()"
   (navigateToEvent)="navigateTo($event)"
 ></app-header>
-<div
+<main
   class="page__content"
   [ngClass]="contentPageIsBlocked() ? 'blocked' : ''"
   (click)="clickPage()"
 >
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-  <p>Content</p>
-</div>
+  <router-outlet></router-outlet>
+</main>
