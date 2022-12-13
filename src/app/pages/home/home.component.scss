@@ -1,14 +1,20 @@
 .home {
   background: var(--yellow-gradient);
-  min-height: 100vh;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 10px;
 
   &__top {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    padding-top: 18px;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1200px) {
       flex-direction: row;
+      padding-top: 68px;
     }
   }
 
@@ -26,6 +32,14 @@
       text-align: center;
       letter-spacing: 4px;
       margin-bottom: 6px;
+      color: var(--c-dark);
+
+      @media screen and (min-width: 1200px) {
+        font-size: 72px;
+        line-height: 84px;
+        text-align: left;
+        margin-bottom: 64px;
+      }
 
       span {
         font-weight: 700;
@@ -38,6 +52,17 @@
       line-height: 28px;
       text-align: center;
       margin-bottom: 42px;
+      color: var(--c-dark);
+
+      @media screen and (min-width: 1200px) {
+        font-size: 32px;
+        line-height: 37px;
+        text-align: left;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding-left: 150px;
     }
   }
 
@@ -47,6 +72,7 @@
     border-radius: 11px;
     height: 55px;
     width: 312px;
+    max-width: 95vw;
     border: none;
     outline: none;
     cursor: pointer;
@@ -61,7 +87,7 @@
     color: var(--c-dark);
 
     &:hover {
-      box-shadow: none;
+      box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
       margin-top: 9px;
       height: 46px;
     }
@@ -69,9 +95,32 @@
 
   &__banner {
     width: 100%;
+    overflow: hidden;
 
     img {
       width: 100%;
+
+      @media screen and (min-width: 1200px) {
+        width: 110%;
+      }
+    }
+  }
+
+  &__bottom {
+    padding-top: 15px;
+    align-self: center;
+
+    span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--c-dark);
+
+      a {
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--c-dark);
+      }
     }
   }
 }
