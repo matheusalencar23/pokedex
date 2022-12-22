@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { GeneralService } from '../service/general.service';
 
 @Component({
@@ -6,12 +7,10 @@ import { GeneralService } from '../service/general.service';
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss'],
 })
-export class PagesComponent implements OnInit {
+export class PagesComponent {
   menuIsOpen: boolean = false;
 
-  constructor(private _generalService: GeneralService) {}
-
-  ngOnInit(): void {}
+  constructor(private _generalService: GeneralService,private _router: Router) {}
 
   contentPageIsBlocked(): boolean {
     return this._generalService.contentPageIsBlocked();
@@ -32,7 +31,7 @@ export class PagesComponent implements OnInit {
   navigateTo(route: string) {
     this.menuIsOpen = false;
     this._generalService.unblockContentPage();
-    console.log(route);
+    this._router.navigate([route])
   }
 
   @HostListener('window:resize')
