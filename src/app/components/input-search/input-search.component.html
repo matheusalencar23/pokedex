@@ -1,1 +1,9 @@
-<p>Input search</p>
+<form class="input-search">
+  <input
+    type="text"
+    placeholder="Find your pokemon..."
+    [(ngModel)]="searchTerm"
+    name="searchTerm"
+    (ngModelChange)="changeSearchTerm($event)"
+  />
+</form>

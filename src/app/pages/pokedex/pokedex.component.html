@@ -1,3 +1,5 @@
 <div class="pokedex page-content">
-  <app-input-search></app-input-search>
+  <app-input-search
+    (emitSearchTerm)="handleSearchTerm($event)"
+  ></app-input-search>
 </div>

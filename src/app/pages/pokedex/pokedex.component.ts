@@ -19,4 +19,8 @@ export class PokedexComponent implements OnInit {
         console.log(res);
       });
   }
+
+  handleSearchTerm(term: string): void {
+    console.log(term);
+  }
 }
