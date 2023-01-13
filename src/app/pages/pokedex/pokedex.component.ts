@@ -43,6 +43,19 @@ export class PokedexComponent implements OnInit {
   }
 
   handleSearchTerm(term: string): void {
-    console.log(term);
+    if (term) {
+      this.page = 0;
+      this.pokemonsDisplayed = [];
+      const filterd = this._pokemons.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(term.toLowerCase())
+      );
+
+      this.pokemonsDisplayed.push(
+        ...filterd.slice(
+          this.page * this.quantityPerPage,
+          this.page * this.quantityPerPage + this.quantityPerPage
+        )
+      );
+    }
   }
 }
