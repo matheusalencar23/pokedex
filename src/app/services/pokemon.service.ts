@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { APISimplePokemon, ISimplePokemon } from '../models/pokemon';
+import { APISimplePokemon, IPokemon, ISimplePokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +27,10 @@ export class PokemonService {
           this._pokemons.next([]);
         },
       });
+  }
+
+  getPokemonDetails(pokemonName: string): Observable<IPokemon> {
+    return this._http.get<IPokemon>(`${this._url}/pokemon/${pokemonName}`);
   }
 
   private _handleParams(params: Object): HttpParams {

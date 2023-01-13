@@ -1,0 +1,30 @@
+<div
+  class="pokemon-card"
+  *ngIf="pokemonDetails"
+  [ngStyle]="{ background: getCardBackground() }"
+>
+  <div class="pokemon-card__data">
+    <p class="pokemon-card__name">{{ pokemonDetails.name }}</p>
+    <div class="pokemon-card__stats">
+      <div class="pokemon-card__stat">
+        <span class="pokemon-card__stat-number">{{ getAttackStat() }}</span>
+        <span class="pokemon-card__stat-title">Attack</span>
+      </div>
+      <div class="pokemon-card__stat">
+        <span class="pokemon-card__stat-number">{{ getDefenseStat() }}</span>
+        <span class="pokemon-card__stat-title">Defense</span>
+      </div>
+    </div>
+    <div class="pokemon-card__types">
+      <span
+        class="pokemon-card__type"
+        *ngFor="let type of getTypes()"
+        [ngStyle]="{ 'background-color': getBackgroundColor(type) }"
+        >{{ type }}</span
+      >
+    </div>
+  </div>
+  <div class="pokemon-card__image">
+    <img [src]="getImage()" alt="" />
+  </div>
+</div>
