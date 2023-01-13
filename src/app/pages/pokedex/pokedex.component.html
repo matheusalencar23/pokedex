@@ -2,4 +2,8 @@
   <app-input-search
     (emitSearchTerm)="handleSearchTerm($event)"
   ></app-input-search>
+
+  <p *ngFor="let pokemon of pokemonsDisplayed">{{ pokemon.name }}</p>
+
+  <button (click)="loadMore()">Load more</button>
 </div>

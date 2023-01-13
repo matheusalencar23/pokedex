@@ -1,24 +1,35 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { APISimplePokemon, ISimplePokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonService {
-  private API_URL = environment.apiUrl;
+  private _url = environment.apiUrl;
+  private _pokemons = new BehaviorSubject<ISimplePokemon[]>([]);
+
+  pokemons$ = this._pokemons.asObservable();
 
   constructor(private _http: HttpClient) {}
 
-  getPokemons(params: any): Observable<any> {
-    const httpParams = this.handleParams(params);
-    return this._http.get<Observable<any>>(`${this.API_URL}/pokemon`, {
-      params: httpParams,
-    });
+  getAllPokemons(): void {
+    const params = this._handleParams({ limit: 2000, offset: 0 });
+    this._http
+      .get<APISimplePokemon>(`${this._url}/pokemon`, { params })
+      .subscribe({
+        next: (res) => {
+          this._pokemons.next(res.results);
+        },
+        error: () => {
+          this._pokemons.next([]);
+        },
+      });
   }
 
-  private handleParams(params: Object): HttpParams {
+  private _handleParams(params: Object): HttpParams {
     let httpParams = new HttpParams();
     Object.entries(params).forEach(([key, value]) => {
       if (typeof value === 'string' || typeof value === 'number')

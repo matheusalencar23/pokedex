@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ISimplePokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -7,17 +8,38 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./pokedex.component.scss'],
 })
 export class PokedexComponent implements OnInit {
-  offset: number = 0;
-  limit: number = 20;
+  page: number = 0;
+  quantityPerPage: number = 20;
+  pokemonsDisplayed: ISimplePokemon[] = [];
+
+  private _pokemons: ISimplePokemon[] = [];
 
   constructor(private _pokemonService: PokemonService) {}
 
   ngOnInit(): void {
-    this._pokemonService
-      .getPokemons({ offset: this.offset, limit: this.limit })
-      .subscribe((res) => {
-        console.log(res);
-      });
+    this._pokemonService.getAllPokemons();
+    this.getPokemons();
+  }
+
+  getPokemons(): void {
+    this._pokemonService.pokemons$.subscribe((res) => {
+      this._pokemons = res;
+      this.handlePokemonsDisplayed();
+    });
+  }
+
+  handlePokemonsDisplayed(): void {
+    this.pokemonsDisplayed.push(
+      ...this._pokemons.slice(
+        this.page * this.quantityPerPage,
+        this.page * this.quantityPerPage + this.quantityPerPage
+      )
+    );
+  }
+
+  loadMore(): void {
+    this.page++;
+    this.handlePokemonsDisplayed();
   }
 
   handleSearchTerm(term: string): void {
