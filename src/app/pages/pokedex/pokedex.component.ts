@@ -10,6 +10,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokedexComponent implements OnInit {
   page: number = 0;
   quantityPerPage: number = 20;
+  term: string = '';
   pokemonsDisplayed: ISimplePokemon[] = [];
 
   private _pokemons: ISimplePokemon[] = [];
@@ -29,12 +30,20 @@ export class PokedexComponent implements OnInit {
   }
 
   handlePokemonsDisplayed(): void {
-    this.pokemonsDisplayed.push(
-      ...this._pokemons.slice(
-        this.page * this.quantityPerPage,
-        this.page * this.quantityPerPage + this.quantityPerPage
-      )
-    );
+    const pokemonsDisplayed = this.term
+      ? this._pokemons
+          .filter((pokemon) =>
+            pokemon.name.toLowerCase().includes(this.term.toLowerCase())
+          )
+          .slice(
+            this.page * this.quantityPerPage,
+            this.page * this.quantityPerPage + this.quantityPerPage
+          )
+      : this._pokemons.slice(
+          this.page * this.quantityPerPage,
+          this.page * this.quantityPerPage + this.quantityPerPage
+        );
+    this.pokemonsDisplayed.push(...pokemonsDisplayed);
   }
 
   loadMore(): void {
@@ -43,19 +52,9 @@ export class PokedexComponent implements OnInit {
   }
 
   handleSearchTerm(term: string): void {
-    if (term) {
-      this.page = 0;
-      this.pokemonsDisplayed = [];
-      const filterd = this._pokemons.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(term.toLowerCase())
-      );
-
-      this.pokemonsDisplayed.push(
-        ...filterd.slice(
-          this.page * this.quantityPerPage,
-          this.page * this.quantityPerPage + this.quantityPerPage
-        )
-      );
-    }
+    if (term) this.page = 0;
+    this.term = term;
+    this.pokemonsDisplayed = [];
+    this.handlePokemonsDisplayed();
   }
 }
