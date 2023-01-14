@@ -20,7 +20,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonCardComponent implements OnChanges {
   pokemonDetails: IPokemon | null = null;
-  loading: boolean = true;
+  loading: boolean = false;
 
   @Input() pokemon: ISimplePokemon | null = null;
 
@@ -42,7 +42,7 @@ export class PokemonCardComponent implements OnChanges {
         error: (err) => {
           this.pokemonDetails = null;
         },
-        // complete: () => (this.loading = false),
+        complete: () => (this.loading = false),
       });
     }
   }

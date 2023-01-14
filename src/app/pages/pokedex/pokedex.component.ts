@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ISimplePokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -12,12 +13,14 @@ export class PokedexComponent implements OnInit {
   quantityPerPage: number = 20;
   term: string = '';
   pokemonsDisplayed: ISimplePokemon[] = [];
+  loading$: Observable<boolean> = new Observable();
 
   private _pokemons: ISimplePokemon[] = [];
 
   constructor(private _pokemonService: PokemonService) {}
 
   ngOnInit(): void {
+    this.loading$ = this._pokemonService.loading$;
     this._pokemonService.getAllPokemons();
     this.getPokemons();
   }

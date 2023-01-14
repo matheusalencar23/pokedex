@@ -3,7 +3,13 @@
     (emitSearchTerm)="handleSearchTerm($event)"
   ></app-input-search>
 
-  <app-pokedex-list [pokemons]="pokemonsDisplayed"></app-pokedex-list>
+  <ng-container *ngIf="pokemonsDisplayed && pokemonsDisplayed.length">
+    <app-pokedex-list [pokemons]="pokemonsDisplayed"></app-pokedex-list>
+  </ng-container>
+
+  <ng-container *ngIf="loading$ | async">
+    <app-spinner [size]="50"></app-spinner>
+  </ng-container>
 
   <button (click)="loadMore()">Load more</button>
 </div>

@@ -10,12 +10,15 @@ import { APISimplePokemon, IPokemon, ISimplePokemon } from '../models/pokemon';
 export class PokemonService {
   private _url = environment.apiUrl;
   private _pokemons = new BehaviorSubject<ISimplePokemon[]>([]);
+  private _loading = new BehaviorSubject<boolean>(false);
 
   pokemons$ = this._pokemons.asObservable();
+  loading$ = this._loading.asObservable();
 
   constructor(private _http: HttpClient) {}
 
   getAllPokemons(): void {
+    this._loading.next(true);
     const params = this._handleParams({ limit: 2000, offset: 0 });
     this._http
       .get<APISimplePokemon>(`${this._url}/pokemon`, { params })
@@ -26,6 +29,7 @@ export class PokemonService {
         error: () => {
           this._pokemons.next([]);
         },
+        complete: () => this._loading.next(false),
       });
   }
 
