@@ -1,6 +1,5 @@
-<div *ngIf="pokemons && pokemons.length">
-  <!-- <ng-container *ngFor="let pokemon of pokemons">
+<div *ngIf="pokemons && pokemons.length" class="pokedex-list">
+  <div class="pokedex-list__item" *ngFor="let pokemon of pokemons">
     <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
-  </ng-container> -->
-  <app-pokemon-card [pokemon]="pokemons[0]"></app-pokemon-card>
+  </div>
 </div>

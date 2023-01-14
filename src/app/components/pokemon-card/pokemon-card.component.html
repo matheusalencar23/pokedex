@@ -4,7 +4,9 @@
   [ngStyle]="{ background: getCardBackground() }"
 >
   <div class="pokemon-card__data">
-    <p class="pokemon-card__name">{{ pokemonDetails.name }}</p>
+    <p class="pokemon-card__name" [title]="pokemonDetails.name | capitalize">
+      {{ pokemonDetails.name | capitalize }}
+    </p>
     <div class="pokemon-card__stats">
       <div class="pokemon-card__stat">
         <span class="pokemon-card__stat-number">{{ getAttackStat() }}</span>
