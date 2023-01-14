@@ -1,4 +1,11 @@
 .spinner {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   border: solid #dbdcef;
   border-top-color: var(--c-second);
   border-radius: 50%;
