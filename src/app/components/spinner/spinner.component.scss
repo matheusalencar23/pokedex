@@ -1,0 +1,12 @@
+.spinner {
+  border: solid #dbdcef;
+  border-top-color: var(--c-second);
+  border-radius: 50%;
+  animation: load 1s infinite linear;
+}
+
+@keyframes load {
+  to {
+    transform: rotate(1turn);
+  }
+}

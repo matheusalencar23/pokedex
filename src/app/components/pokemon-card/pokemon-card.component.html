@@ -1,6 +1,6 @@
 <div
   class="pokemon-card"
-  *ngIf="pokemonDetails"
+  *ngIf="pokemonDetails && !loading"
   [ngStyle]="{ background: getCardBackground() }"
 >
   <div class="pokemon-card__data">
@@ -30,3 +30,5 @@
     <img [src]="getImage()" alt="" />
   </div>
 </div>
+
+<app-spinner *ngIf="loading"></app-spinner>
