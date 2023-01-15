@@ -33,20 +33,27 @@ export class PokedexComponent implements OnInit {
   }
 
   handlePokemonsDisplayed(): void {
-    const pokemonsDisplayed = this.term
-      ? this._pokemons
-          .filter((pokemon) =>
-            pokemon.name.toLowerCase().includes(this.term.toLowerCase())
-          )
-          .slice(
-            this.page * this.quantityPerPage,
-            this.page * this.quantityPerPage + this.quantityPerPage
-          )
-      : this._pokemons.slice(
+    this._pokemonService.loading = true;
+
+    let pokemonsDisplayed: ISimplePokemon[] = [];
+    if (this.term) {
+      pokemonsDisplayed = this._pokemons
+        .filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(this.term.toLowerCase())
+        )
+        .slice(
           this.page * this.quantityPerPage,
           this.page * this.quantityPerPage + this.quantityPerPage
         );
+    } else {
+      pokemonsDisplayed = this._pokemons.slice(
+        this.page * this.quantityPerPage,
+        this.page * this.quantityPerPage + this.quantityPerPage
+      );
+    }
+
     this.pokemonsDisplayed.push(...pokemonsDisplayed);
+    this._pokemonService.loading = false;
   }
 
   loadMore(): void {

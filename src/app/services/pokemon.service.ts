@@ -17,6 +17,10 @@ export class PokemonService {
 
   constructor(private _http: HttpClient) {}
 
+  set loading(value: boolean) {
+    this._loading.next(value);
+  }
+
   getAllPokemons(): void {
     this._loading.next(true);
     const params = this._handleParams({ limit: 2000, offset: 0 });
