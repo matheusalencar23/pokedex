@@ -10,6 +10,10 @@
   align-items: center;
   z-index: 9999;
 
+  &__logo {
+    cursor: pointer;
+  }
+
   &__navbar {
     position: absolute;
     background: var(--yellow-gradient);

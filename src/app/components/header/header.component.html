@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header__logo">
-    <img src="assets/logo.svg" alt="Logo" />
+    <img src="assets/logo.svg" alt="Logo" (click)="navigateTo('/home')" />
   </div>
   <nav class="header__navbar" [ngClass]="menuIsOpen ? 'opened' : ''">
     <div class="header__navbar-logo">
@@ -13,12 +13,12 @@
       <li>
         <a (click)="navigateTo('/pokedex')">Pokedéx</a>
       </li>
-      <li>
+      <!-- <li>
         <a (click)="navigateTo('/')">Legendaries</a>
       </li>
       <li>
         <a (click)="navigateTo('/')">Documentation</a>
-      </li>
+      </li> -->
     </ul>
   </nav>
   <button class="header__btn-menu" (click)="openMenu()">
