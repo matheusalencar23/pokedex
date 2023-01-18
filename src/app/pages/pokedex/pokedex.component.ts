@@ -67,4 +67,8 @@ export class PokedexComponent implements OnInit {
     this.pokemonsDisplayed = [];
     this.handlePokemonsDisplayed();
   }
+
+  showLoadMoreButton(): boolean {
+    return !!(this.pokemonsDisplayed.length % this._pokemons.length);
+  }
 }

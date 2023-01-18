@@ -11,5 +11,8 @@
     <app-spinner [size]="50"></app-spinner>
   </ng-container>
 
-  <app-load-more-button (click)="loadMore()"></app-load-more-button>
+  <app-load-more-button
+    (click)="loadMore()"
+    *ngIf="showLoadMoreButton()"
+  ></app-load-more-button>
 </div>
