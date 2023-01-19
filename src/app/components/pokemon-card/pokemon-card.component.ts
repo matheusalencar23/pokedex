@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import {
@@ -23,6 +25,8 @@ export class PokemonCardComponent implements OnChanges {
   loading: boolean = false;
 
   @Input() pokemon: ISimplePokemon | null = null;
+
+  @Output() openModal = new EventEmitter<IPokemon>();
 
   constructor(private _pokemonService: PokemonService) {}
 

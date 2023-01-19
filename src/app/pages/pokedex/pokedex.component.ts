@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ISimplePokemon } from 'src/app/models/pokemon';
+import { IPokemon, ISimplePokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class PokedexComponent implements OnInit {
   term: string = '';
   pokemonsDisplayed: ISimplePokemon[] = [];
   loading$: Observable<boolean> = new Observable();
+  modalVisible: boolean = false;
 
   private _pokemons: ISimplePokemon[] = [];
 
@@ -70,5 +71,10 @@ export class PokedexComponent implements OnInit {
 
   showLoadMoreButton(): boolean {
     return !!(this.pokemonsDisplayed.length % this._pokemons.length);
+  }
+
+  openModal(pokemon: IPokemon): void {
+    console.log(pokemon);
+    this.modalVisible = true;
   }
 }

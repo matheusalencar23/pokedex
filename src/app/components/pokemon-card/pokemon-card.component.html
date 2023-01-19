@@ -2,6 +2,7 @@
   class="pokemon-card"
   *ngIf="pokemonDetails && !loading"
   [ngStyle]="{ background: getCardBackground() }"
+  (click)="openModal.emit(pokemonDetails)"
 >
   <div class="pokemon-card__data">
     <p class="pokemon-card__name" [title]="pokemonDetails.name | capitalize">

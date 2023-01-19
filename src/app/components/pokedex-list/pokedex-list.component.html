@@ -1,5 +1,8 @@
 <div *ngIf="pokemons && pokemons.length" class="pokedex-list">
   <div class="pokedex-list__item" *ngFor="let pokemon of pokemons">
-    <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+    <app-pokemon-card
+      [pokemon]="pokemon"
+      (openModal)="openModal.emit($event)"
+    ></app-pokemon-card>
   </div>
 </div>

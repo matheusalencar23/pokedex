@@ -4,7 +4,10 @@
   ></app-input-search>
 
   <ng-container *ngIf="pokemonsDisplayed && pokemonsDisplayed.length">
-    <app-pokedex-list [pokemons]="pokemonsDisplayed"></app-pokedex-list>
+    <app-pokedex-list
+      [pokemons]="pokemonsDisplayed"
+      (openModal)="openModal($event)"
+    ></app-pokedex-list>
   </ng-container>
 
   <ng-container *ngIf="loading$ | async">
@@ -16,3 +19,5 @@
     *ngIf="showLoadMoreButton()"
   ></app-load-more-button>
 </div>
+
+<app-modal [(visible)]="modalVisible"> Modal </app-modal>
