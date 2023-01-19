@@ -1,6 +1,6 @@
 <ng-container *ngIf="visible">
-  <div class="modal">
+  <div class="modal" @modal>
     <ng-content></ng-content>
   </div>
-  <div class="overlay" (click)="close()"></div>
+  <div class="overlay" (click)="close()" @overlay></div>
 </ng-container>
