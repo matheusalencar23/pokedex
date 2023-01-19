@@ -15,5 +15,6 @@ export class ModalComponent implements OnInit {
 
   close(): void {
     this.visible = false;
+    this.visibleChange.emit(false);
   }
 }
