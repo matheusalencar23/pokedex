@@ -19,12 +19,9 @@
       </div>
     </div>
     <div class="pokemon-card__types">
-      <span
-        class="pokemon-card__type"
-        *ngFor="let type of getTypes()"
-        [ngStyle]="{ 'background-color': getBackgroundColor(type) }"
-        >{{ type }}</span
-      >
+      <ng-container *ngFor="let type of getTypes()">
+        <app-type-tip [type]="type"></app-type-tip>
+      </ng-container>
     </div>
   </div>
   <div class="pokemon-card__image">
