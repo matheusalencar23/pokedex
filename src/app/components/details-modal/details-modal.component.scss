@@ -1,0 +1,19 @@
+.details-modal {
+  min-width: 100vw;
+  min-height: 100vh;
+
+  @media screen and (min-width: 768px) {
+    min-width: 80vw;
+    min-height: fit-content;
+  }
+
+  @media screen and (min-width: 992px) {
+    min-width: 75vw;
+    min-height: fit-content;
+  }
+
+  @media screen and (min-width: 1200px) {
+    min-width: 50vw;
+    min-height: fit-content;
+  }
+}

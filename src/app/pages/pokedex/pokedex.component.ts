@@ -15,6 +15,7 @@ export class PokedexComponent implements OnInit {
   pokemonsDisplayed: ISimplePokemon[] = [];
   loading$: Observable<boolean> = new Observable();
   modalVisible: boolean = false;
+  pokemonSelected: IPokemon | null = null;
 
   private _pokemons: ISimplePokemon[] = [];
 
@@ -74,7 +75,7 @@ export class PokedexComponent implements OnInit {
   }
 
   openModal(pokemon: IPokemon): void {
-    console.log(pokemon);
+    this.pokemonSelected = pokemon;
     this.modalVisible = true;
   }
 }

@@ -20,4 +20,6 @@
   ></app-load-more-button>
 </div>
 
-<app-modal [(visible)]="modalVisible"> Modal </app-modal>
+<app-modal [(visible)]="modalVisible">
+  <app-details-modal [pokemon]="pokemonSelected"></app-details-modal>
+</app-modal>
