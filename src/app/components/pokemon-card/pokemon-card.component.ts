@@ -81,8 +81,8 @@ export class PokemonCardComponent implements OnChanges {
   getCardBackground(): string {
     const primaryType = this.getTypes()[0];
     const color = this.getBackgroundColor(primaryType);
-    const teste = `linear-gradient(90deg, #f6f7f9 35%, ${color} 35%)`;
-    return teste;
+    const style = `linear-gradient(90deg, #f6f7f9 35%, ${color} 35%)`;
+    return style;
   }
 
   private _getStats(stat: StatsName): number {

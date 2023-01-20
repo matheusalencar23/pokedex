@@ -1,3 +1,16 @@
-<div class="details-modal">
-  <p>modal</p>
+<div
+  class="details-modal"
+  [ngStyle]="{ 'background-color': getBackgroundColor() }"
+  *ngIf="pokemon"
+>
+  <div class="details-modal__hero">
+    <p>{{ pokemon.name }}</p>
+    <div class="details-modal__image">
+      <img [src]="getImage()" alt="pokemon-image" />
+    </div>
+  </div>
+  <div
+    class="details-modal__content"
+    [ngStyle]="{ background: getBackgroundContentColor() }"
+  ></div>
 </div>
