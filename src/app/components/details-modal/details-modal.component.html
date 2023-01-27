@@ -3,6 +3,9 @@
   [ngStyle]="{ 'background-color': getBackgroundColor() }"
   *ngIf="pokemon"
 >
+  <button class="details-modal__close-button" (click)="closeModal()">
+    <img src="assets/close-icon.svg" alt="close-icon" />
+  </button>
   <div class="details-modal__hero">
     <p class="details-modal__hero-title">{{ pokemon.name | capitalize }}</p>
     <div class="details-modal__image">

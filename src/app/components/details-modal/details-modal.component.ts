@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ColorType, IPokemon } from 'src/app/models/pokemon';
 
 @Component({
@@ -8,6 +8,7 @@ import { ColorType, IPokemon } from 'src/app/models/pokemon';
 })
 export class DetailsModalComponent {
   @Input() pokemon: IPokemon | null = null;
+  @Output() clickCloseButton = new EventEmitter<void>();
 
   constructor() {}
 
@@ -45,5 +46,9 @@ export class DetailsModalComponent {
   handleColorShadow(color: string): number {
     const colorAsNumber = parseInt(color, 16) - 75;
     return colorAsNumber > 0 ? colorAsNumber : 0;
+  }
+
+  closeModal(): void {
+    this.clickCloseButton.emit();
   }
 }

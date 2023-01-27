@@ -21,5 +21,8 @@
 </div>
 
 <app-modal [(visible)]="modalVisible">
-  <app-details-modal [pokemon]="pokemonSelected"></app-details-modal>
+  <app-details-modal
+    [pokemon]="pokemonSelected"
+    (clickCloseButton)="closeModal()"
+  ></app-details-modal>
 </app-modal>

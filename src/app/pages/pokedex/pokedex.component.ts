@@ -78,4 +78,9 @@ export class PokedexComponent implements OnInit {
     this.pokemonSelected = pokemon;
     this.modalVisible = true;
   }
+
+  closeModal(): void {
+    this.pokemonSelected = null;
+    this.modalVisible = false;
+  }
 }
