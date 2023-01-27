@@ -4,7 +4,7 @@
   *ngIf="pokemon"
 >
   <div class="details-modal__hero">
-    <p>{{ pokemon.name }}</p>
+    <p class="details-modal__hero-title">{{ pokemon.name | capitalize }}</p>
     <div class="details-modal__image">
       <img [src]="getImage()" alt="pokemon-image" />
     </div>
