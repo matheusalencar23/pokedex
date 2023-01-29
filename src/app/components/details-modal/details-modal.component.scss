@@ -94,6 +94,20 @@
       border-radius: 0;
       padding-top: 24px;
     }
+
+    &-title {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 42px;
+      color: #fdfdfd;
+      text-align: center;
+      text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+      display: none;
+
+      @media screen and (min-width: 768px) {
+        display: block;
+      }
+    }
   }
 
   &__header {
@@ -115,6 +129,9 @@
     width: 42px;
     height: 42px;
     border-radius: 21px;
+    box-shadow: 2px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 13;
   }
 
   &__types {

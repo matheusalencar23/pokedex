@@ -16,6 +16,9 @@
     class="details-modal__content"
     [ngStyle]="{ background: getBackgroundContentColor() }"
   >
+    <div class="details-modal__content-title">
+      {{ pokemon.name | capitalize }}
+    </div>
     <div class="details-modal__header">
       <div class="details-modal__id">{{ pokemon.id }}</div>
       <div class="details-modal__types">
