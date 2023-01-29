@@ -122,4 +122,50 @@
     gap: 8px;
     align-items: center;
   }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    margin: 32px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    padding-bottom: 32px;
+    gap: 24px;
+  }
+
+  &__hp,
+  &__xp {
+    position: relative;
+
+    p {
+      font-size: 16px;
+      line-height: 19px;
+      color: #000000;
+    }
+
+    p:first-child {
+      font-weight: 400;
+    }
+
+    p:nth-child(2) {
+      font-weight: 700;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 8px;
+      border-radius: 8px;
+    }
+  }
+
+  &__hp::after {
+    background: linear-gradient(270deg, #64d368 0.15%, #64d368 70.88%);
+  }
+
+  &__xp::after {
+    background: var(--yellow-gradient);
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ColorType, IPokemon } from 'src/app/models/pokemon';
+import { ColorType, IPokemon, StatsName } from 'src/app/models/pokemon';
 
 @Component({
   selector: 'app-details-modal',
@@ -54,5 +54,16 @@ export class DetailsModalComponent {
 
   getTypes(): string[] {
     return this.pokemon?.types.map((item) => item.type.name) || [];
+  }
+
+  get hp(): number {
+    return this._getStats(StatsName.HP);
+  }
+
+  private _getStats(stat: StatsName): number {
+    return (
+      this.pokemon?.stats.find((item) => item.stat.name === stat)?.base_stat ||
+      0
+    );
   }
 }
