@@ -1,8 +1,9 @@
 .page {
   &__content {
-    padding-top: 72px;
-    max-height: 100vh;
+    max-height: calc(100vh - 72px);
     overflow: auto;
+    position: relative;
+    top: 72px;
 
     &::after {
       content: "";
