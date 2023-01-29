@@ -7,18 +7,18 @@
 
   @media screen and (min-width: 768px) {
     min-width: 80vw;
-    height: 90vh;
+    height: 60vh;
     flex-direction: row;
   }
 
   @media screen and (min-width: 992px) {
     min-width: 75vw;
-    height: 85vh;
+    height: 55vh;
   }
 
   @media screen and (min-width: 1200px) {
     min-width: 50vw;
-    height: 80vh;
+    height: 50vh;
   }
 
   &__close-button {
@@ -29,7 +29,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    z-index: 12;
+    z-index: 14;
   }
 
   &__hero {
@@ -55,6 +55,8 @@
       margin-top: 24px;
       text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
       display: block;
+      position: relative;
+      z-index: 13;
 
       @media screen and (min-width: 768px) {
         display: none;
@@ -89,6 +91,78 @@
     flex: 1;
     border-radius: 8px 8px 0 0;
     padding-top: 160px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #44685e 0%, #30565e 100%);
+      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    }
+
+    &.dark,
+    &.rock {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #a1a1a1 0%, #c1aabd 100%);
+      }
+    }
+
+    &.grass,
+    &.bug {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #70a83b 0%, #30a052 100%);
+      }
+    }
+
+    &.ice,
+    &.water {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #a2cff0 0%, #7cdff7 100%);
+      }
+    }
+
+    &.fire,
+    &.fighting,
+    &.dragon {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #f76545 0%, #e05074 100%);
+      }
+    }
+
+    &.normal,
+    &.ghost {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #76aadb 0%, #3bc3e8 100%);
+      }
+    }
+
+    &.poison,
+    &.psychic,
+    &.fairy,
+    &.flying,
+    &.ghost {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #a974bc 0%, #e479b0 100%);
+      }
+    }
+
+    &.ground {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #9b897b 0%, #826871 100%);
+      }
+    }
+
+    &.electric {
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #f7c545 0%, #ffc066 100%);
+      }
+    }
 
     @media screen and (min-width: 768px) {
       border-radius: 0;

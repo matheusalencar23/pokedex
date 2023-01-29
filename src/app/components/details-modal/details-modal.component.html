@@ -14,6 +14,7 @@
   </div>
   <div
     class="details-modal__content"
+    [ngClass]="getTypes()[0]"
     [ngStyle]="{ background: getBackgroundContentColor() }"
   >
     <div class="details-modal__content-title">
