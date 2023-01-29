@@ -123,6 +123,14 @@
     align-items: center;
   }
 
+  &__body {
+    margin: 0;
+
+    @media screen and (min-width: 768px) {
+      margin-left: 80px;
+    }
+  }
+
   &__card {
     display: flex;
     flex-direction: column;
@@ -132,6 +140,9 @@
     padding: 12px;
     padding-bottom: 32px;
     gap: 24px;
+    box-shadow: 2px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 13;
   }
 
   &__hp,
@@ -167,5 +178,51 @@
 
   &__xp::after {
     background: var(--yellow-gradient);
+  }
+
+  &__data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 32px;
+    justify-content: space-between;
+
+    & > div {
+      position: relative;
+      z-index: 13;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #fff;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 2px 0px 10px 0px rgba(0, 0, 0, 0.3);
+      width: 80px;
+      height: 80px;
+
+      & > span {
+        width: 40px;
+        height: 40px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #212121;
+        border: 3px solid #212121;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+
+      & > p {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 13px;
+        text-align: center;
+        color: #4b4b4b;
+      }
+    }
   }
 }

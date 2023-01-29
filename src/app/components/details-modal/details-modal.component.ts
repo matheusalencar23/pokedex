@@ -60,6 +60,26 @@ export class DetailsModalComponent {
     return this._getStats(StatsName.HP);
   }
 
+  get attack(): number {
+    return this._getStats(StatsName.ATTACK);
+  }
+
+  get defense(): number {
+    return this._getStats(StatsName.DEFENSE);
+  }
+
+  get specialAttack(): number {
+    return this._getStats(StatsName.SPECIAL_ATTACK);
+  }
+
+  get specialDefense(): number {
+    return this._getStats(StatsName.SPEACIAL_DEFENSE);
+  }
+
+  get speed(): number {
+    return this._getStats(StatsName.SPEED);
+  }
+
   private _getStats(stat: StatsName): number {
     return (
       this.pokemon?.stats.find((item) => item.stat.name === stat)?.base_stat ||
