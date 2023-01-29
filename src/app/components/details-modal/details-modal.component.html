@@ -15,5 +15,14 @@
   <div
     class="details-modal__content"
     [ngStyle]="{ background: getBackgroundContentColor() }"
-  ></div>
+  >
+    <div class="details-modal__header">
+      <div class="details-modal__id">{{ pokemon.id }}</div>
+      <div class="details-modal__types">
+        <ng-container *ngFor="let type of getTypes()">
+          <app-type-tip [type]="type"></app-type-tip>
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </div>

@@ -88,9 +88,37 @@
   &__content {
     flex: 1;
     border-radius: 8px 8px 0 0;
+    padding-top: 160px;
 
     @media screen and (min-width: 768px) {
       border-radius: 0;
     }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 32px;
+    align-items: center;
+  }
+
+  &__id {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2cb07;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #000000;
+    width: 42px;
+    height: 42px;
+    border-radius: 21px;
+  }
+
+  &__types {
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
 }

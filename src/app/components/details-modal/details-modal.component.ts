@@ -51,4 +51,8 @@ export class DetailsModalComponent {
   closeModal(): void {
     this.clickCloseButton.emit();
   }
+
+  getTypes(): string[] {
+    return this.pokemon?.types.map((item) => item.type.name) || [];
+  }
 }
