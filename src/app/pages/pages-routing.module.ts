@@ -9,11 +9,18 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+        loadChildren: () =>
+          import('./home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'pokedex',
-        loadChildren: () => import('./pokedex/pokedex.module').then((m) => m.PokedexModule)
+        loadChildren: () =>
+          import('./pokedex/pokedex.module').then((m) => m.PokedexModule),
+      },
+      {
+        path: 'about',
+        loadChildren: () =>
+          import('./about/about.module').then((m) => m.AboutModule),
       },
       {
         path: '',
