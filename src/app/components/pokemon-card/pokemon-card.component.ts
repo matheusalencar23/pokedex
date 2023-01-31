@@ -68,6 +68,11 @@ export class PokemonCardComponent implements OnChanges {
       return this.pokemonDetails?.sprites.other.home.front_default;
     if (this.pokemonDetails?.sprites?.other?.dream_world?.front_default)
       return this.pokemonDetails?.sprites?.other?.dream_world?.front_default;
+    if (
+      this.pokemonDetails?.sprites?.other?.['official-artwork']?.front_default
+    )
+      return this.pokemonDetails?.sprites?.other?.['official-artwork']
+        ?.front_default;
     return this.pokemonDetails?.sprites?.front_default || '';
   }
 

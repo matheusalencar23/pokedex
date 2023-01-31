@@ -17,6 +17,8 @@ export class DetailsModalComponent {
       return this.pokemon?.sprites.other.home.front_default;
     if (this.pokemon?.sprites?.other?.dream_world?.front_default)
       return this.pokemon?.sprites?.other?.dream_world?.front_default;
+    if (this.pokemon?.sprites?.other?.['official-artwork']?.front_default)
+      return this.pokemon?.sprites?.other?.['official-artwork']?.front_default;
     return this.pokemon?.sprites?.front_default || '';
   }
 
