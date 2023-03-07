@@ -25,7 +25,6 @@ export class PokemonCardComponent implements OnChanges {
   loading: boolean = false;
 
   @Input() pokemon: ISimplePokemon | null = null;
-
   @Output() openModal = new EventEmitter<IPokemon>();
 
   constructor(private _pokemonService: PokemonService) {}
@@ -64,16 +63,9 @@ export class PokemonCardComponent implements OnChanges {
   }
 
   getImage(): string {
-    if (this.pokemonDetails?.sprites?.other?.home?.front_default)
-      return this.pokemonDetails?.sprites.other.home.front_default;
-    if (this.pokemonDetails?.sprites?.other?.dream_world?.front_default)
-      return this.pokemonDetails?.sprites?.other?.dream_world?.front_default;
-    if (
-      this.pokemonDetails?.sprites?.other?.['official-artwork']?.front_default
-    )
-      return this.pokemonDetails?.sprites?.other?.['official-artwork']
-        ?.front_default;
-    return this.pokemonDetails?.sprites?.front_default || '';
+    if (this.pokemonDetails)
+      return this._pokemonService.getImage(this.pokemonDetails);
+    return '';
   }
 
   getBackgroundColor(type: string): string {

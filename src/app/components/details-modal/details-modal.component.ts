@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ColorType, IPokemon, StatsName } from 'src/app/models/pokemon';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-details-modal',
@@ -10,16 +11,11 @@ export class DetailsModalComponent {
   @Input() pokemon: IPokemon | null = null;
   @Output() clickCloseButton = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(private _pokemonService: PokemonService) {}
 
   getImage(): string {
-    if (this.pokemon?.sprites?.other?.home?.front_default)
-      return this.pokemon?.sprites.other.home.front_default;
-    if (this.pokemon?.sprites?.other?.dream_world?.front_default)
-      return this.pokemon?.sprites?.other?.dream_world?.front_default;
-    if (this.pokemon?.sprites?.other?.['official-artwork']?.front_default)
-      return this.pokemon?.sprites?.other?.['official-artwork']?.front_default;
-    return this.pokemon?.sprites?.front_default || '';
+    if (this.pokemon) return this._pokemonService.getImage(this.pokemon);
+    return '';
   }
 
   getBackgroundColor(): string {

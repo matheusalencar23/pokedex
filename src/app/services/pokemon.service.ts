@@ -49,4 +49,14 @@ export class PokemonService {
     });
     return httpParams;
   }
+
+  getImage(pokemon: IPokemon): string {
+    if (pokemon?.sprites?.other?.home?.front_default)
+      return pokemon?.sprites.other.home.front_default;
+    if (pokemon?.sprites?.other?.dream_world?.front_default)
+      return pokemon?.sprites?.other?.dream_world?.front_default;
+    if (pokemon?.sprites?.other?.['official-artwork']?.front_default)
+      return pokemon?.sprites?.other?.['official-artwork']?.front_default;
+    return pokemon?.sprites?.front_default || '';
+  }
 }
