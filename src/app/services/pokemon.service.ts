@@ -41,6 +41,10 @@ export class PokemonService {
     return this._http.get<IPokemon>(`${this._url}/pokemon/${pokemonName}`);
   }
 
+  getTypes(pokemon: IPokemon): string[] {
+    return pokemon?.types.map((item) => item.type.name) || [];
+  }
+
   private _handleParams(params: Object): HttpParams {
     let httpParams = new HttpParams();
     Object.entries(params).forEach(([key, value]) => {

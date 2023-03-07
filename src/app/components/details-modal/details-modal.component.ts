@@ -43,7 +43,8 @@ export class DetailsModalComponent {
   }
 
   getTypes(): string[] {
-    return this.pokemon?.types.map((item) => item.type.name) || [];
+    if (this.pokemon) return this._pokemonService.getTypes(this.pokemon);
+    return [];
   }
 
   get hp(): number {

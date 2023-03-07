@@ -59,7 +59,9 @@ export class PokemonCardComponent implements OnChanges {
   }
 
   getTypes(): string[] {
-    return this.pokemonDetails?.types.map((item) => item.type.name) || [];
+    if (this.pokemonDetails)
+      return this._pokemonService.getTypes(this.pokemonDetails);
+    return [];
   }
 
   getImage(): string {
