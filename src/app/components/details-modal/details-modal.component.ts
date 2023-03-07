@@ -48,33 +48,44 @@ export class DetailsModalComponent {
   }
 
   get hp(): number {
-    return this._getStats(StatsName.HP);
+    if (this.pokemon)
+      return this._pokemonService.getStats(this.pokemon, StatsName.HP);
+    return 0;
   }
 
   get attack(): number {
-    return this._getStats(StatsName.ATTACK);
+    if (this.pokemon)
+      return this._pokemonService.getStats(this.pokemon, StatsName.ATTACK);
+    return 0;
   }
 
   get defense(): number {
-    return this._getStats(StatsName.DEFENSE);
+    if (this.pokemon)
+      return this._pokemonService.getStats(this.pokemon, StatsName.DEFENSE);
+    return 0;
   }
 
   get specialAttack(): number {
-    return this._getStats(StatsName.SPECIAL_ATTACK);
+    if (this.pokemon)
+      return this._pokemonService.getStats(
+        this.pokemon,
+        StatsName.SPECIAL_ATTACK
+      );
+    return 0;
   }
 
   get specialDefense(): number {
-    return this._getStats(StatsName.SPEACIAL_DEFENSE);
+    if (this.pokemon)
+      return this._pokemonService.getStats(
+        this.pokemon,
+        StatsName.SPEACIAL_DEFENSE
+      );
+    return 0;
   }
 
   get speed(): number {
-    return this._getStats(StatsName.SPEED);
-  }
-
-  private _getStats(stat: StatsName): number {
-    return (
-      this.pokemon?.stats.find((item) => item.stat.name === stat)?.base_stat ||
-      0
-    );
+    if (this.pokemon)
+      return this._pokemonService.getStats(this.pokemon, StatsName.SPEED);
+    return 0;
   }
 }

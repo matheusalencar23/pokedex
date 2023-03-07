@@ -50,12 +50,22 @@ export class PokemonCardComponent implements OnChanges {
     }
   }
 
-  getAttackStat(): number {
-    return this._getStats(StatsName.ATTACK);
+  get attack(): number {
+    if (this.pokemonDetails)
+      return this._pokemonService.getStats(
+        this.pokemonDetails,
+        StatsName.ATTACK
+      );
+    return 0;
   }
 
-  getDefenseStat(): number {
-    return this._getStats(StatsName.DEFENSE);
+  get defense(): number {
+    if (this.pokemonDetails)
+      return this._pokemonService.getStats(
+        this.pokemonDetails,
+        StatsName.DEFENSE
+      );
+    return 0;
   }
 
   getTypes(): string[] {
@@ -82,12 +92,5 @@ export class PokemonCardComponent implements OnChanges {
     const color = this.getBackgroundColor(primaryType);
     const style = `linear-gradient(90deg, #f6f7f9 35%, ${color} 35%)`;
     return style;
-  }
-
-  private _getStats(stat: StatsName): number {
-    return (
-      this.pokemonDetails?.stats.find((item) => item.stat.name === stat)
-        ?.base_stat || 0
-    );
   }
 }

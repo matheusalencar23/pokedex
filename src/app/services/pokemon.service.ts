@@ -2,7 +2,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { APISimplePokemon, IPokemon, ISimplePokemon } from '../models/pokemon';
+import {
+  APISimplePokemon,
+  IPokemon,
+  ISimplePokemon,
+  StatsName,
+} from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root',
@@ -62,5 +67,11 @@ export class PokemonService {
     if (pokemon?.sprites?.other?.['official-artwork']?.front_default)
       return pokemon?.sprites?.other?.['official-artwork']?.front_default;
     return pokemon?.sprites?.front_default || '';
+  }
+
+  getStats(pokemon: IPokemon, stat: StatsName): number {
+    return (
+      pokemon?.stats.find((item) => item.stat.name === stat)?.base_stat || 0
+    );
   }
 }
