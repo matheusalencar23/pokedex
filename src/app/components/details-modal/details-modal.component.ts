@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ColorType, IPokemon, StatsName } from 'src/app/models/pokemon';
+import { GeneralService } from 'src/app/services/general.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class DetailsModalComponent {
   @Input() pokemon: IPokemon | null = null;
   @Output() clickCloseButton = new EventEmitter<void>();
 
-  constructor(private _pokemonService: PokemonService) {}
+  constructor(
+    private _pokemonService: PokemonService,
+    private _generalService: GeneralService
+  ) {}
 
   getImage(): string {
     if (this.pokemon) return this._pokemonService.getImage(this.pokemon);
@@ -28,22 +32,10 @@ export class DetailsModalComponent {
 
   getBackgroundContentColor(): string {
     const color = this.getBackgroundColor();
-    const style = `linear-gradient(180deg, ${this.convertHexToShadowRgb(
+    const style = `linear-gradient(180deg, ${this._generalService.convertHexToShadowRgb(
       color
     )} 35%, ${color} 75%)`;
     return style;
-  }
-
-  convertHexToShadowRgb(hex: string): string {
-    const r = this.handleColorShadow(hex.slice(1, 3));
-    const g = this.handleColorShadow(hex.slice(3, 5));
-    const b = this.handleColorShadow(hex.slice(5));
-    return `rgb(${r}, ${g}, ${b})`;
-  }
-
-  handleColorShadow(color: string): number {
-    const colorAsNumber = parseInt(color, 16) - 75;
-    return colorAsNumber > 0 ? colorAsNumber : 0;
   }
 
   closeModal(): void {
